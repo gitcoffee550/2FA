@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2FA Authenticator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        #dataContainer {
+            max-width: 300px;
+            height: auto;
+            border: 1px solid #ddd;
+            margin-top: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>2FA Authenticator</h1>
+    <img id="dataContainer" src="" alt="2FA QR Code" />
+
+    <script>
+        const url = 'http://localhost:3001/qrcode';
+        
+        fetch(url)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`Network response was not ok: ${response.statusText}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                const dataContainer = document.getElementById('dataContainer');
+                if (data && data.data_url) {
+                    dataContainer.setAttribute('src', data.data_url);
+                } else {
+                    dataContainer.alt = 'No QR code available';
+                }
+            })
+            .catch(error => {
+                console.error('Fetch error:', error);
+                document.getElementById('dataContainer').alt = 'Error fetching data';
+            });
+    </script>
+</body>
+</html>

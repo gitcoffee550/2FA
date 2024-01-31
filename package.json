@@ -1,0 +1,21 @@
+{
+  "name": "qrcode",
+  "version": "1.0.0",
+  "description": "Two-factor Authentication (2FA) increases security by requiring two forms of identification: something you know (a password) and something you have (such as a phone). This guide explains how to generate a QR Code to set up 2FA and the steps to verify the authentication code.",
+  "main": "app.js",
+  "engines": {
+    "node": "18.5.0"
+  },
+  "scripts": {
+    "dev": "SERVICE_NAME=Jurassic nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "qrcode": "^1.5.3",
+    "speakeasy": "^2.0.0"
+  },
+  "devDependencies": {},
+  "author": "",
+  "license": "ISC"
+}
