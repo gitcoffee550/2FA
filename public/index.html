@@ -27,10 +27,8 @@
     <h1>2FA Authenticator</h1>
     <img id="dataContainer" src="" alt="2FA QR Code" />
 
-    <script>
-        const url = 'http://localhost:3001/qrcode';
-        
-        fetch(url)
+    <script>       
+        fetch('/qrcode')
             .then(response => {
                 if (!response.ok) {
                     throw new Error(`Network response was not ok: ${response.statusText}`);
